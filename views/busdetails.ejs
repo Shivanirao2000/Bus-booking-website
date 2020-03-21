@@ -1,0 +1,73 @@
+<h1>
+	BUS DETAILS
+</h1>
+
+<p>
+	welcome to B.M.T.C
+</p>
+<form action="/a1" method="POST">
+	
+<p>
+	<label for="bus_name">Choose a bus:</label>
+	<select id="bus_name" name="bus_name" value="bus_name">
+	<% bus.forEach(function(bus){ %>
+		<% if(bus.name!=rest[0].bus_name1) {%>
+		<option><%=bus.name%></option>
+		<%}%>
+		<% if(bus.name==rest[0].bus_name1) {%>
+		<option selected><%=bus.name%></option>
+	<% }}); %>
+	</select>
+</p>
+<div>
+	<button>
+		Submit
+	</button>
+	
+</div>
+</form>
+
+<form action="/b1" method="POST">
+<p>
+	<label for="start_route">Choose the boarding place:</label>
+	
+	<select id="start_route" name="start_route">
+	<% bus.forEach(function(bus){ %>
+		<% if(bus.name==rest[0].bus_name1){ %>
+		<%	for(var i=0;i<=2;i++){ %>
+			<option><%=bus.start_route[i]%></option>
+		<% }} %>
+	<% }); %>
+	</select>
+</p>
+
+<p>
+	<label for="end_route">Choose the destination place:</label>
+	
+	<select id="end_route" name="end_route">
+	<% bus.forEach(function(bus){ %>
+		<% if(bus.name==rest[0].bus_name1){ %>
+		<%	for(var i=0;i<=2;i++){ %>
+			<option><%=bus.end_route[i]%></option>
+		<% }} %>
+	<% }); %>
+	</select>
+</p>
+
+<p>
+	<label for="no_of_ppl">Choose the number of people:</label>
+	<select id="no_of_ppl" name="no_of_ppl">
+	<%	for(var i=1;i<=10;i++){ %>
+		<option><%=i%></option>
+	<% } %>
+	</select>
+</p>
+
+<div>
+	<button>
+		Submit
+	</button>
+	
+</div>
+	
+</form>
