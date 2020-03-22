@@ -90,7 +90,7 @@ app.get("/fetchDetails", function(req,res){
 });
 
 app.post("/fetchDetails", function(req,res){
-	res.render("payment.ejs");
+	res.render("payment.ejs"); 
 });
 
 
