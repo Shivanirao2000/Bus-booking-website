@@ -85,6 +85,14 @@ app.post("/login", passport.authenticate("local",{
 }), function(req,res){
 });
 
+app.get("/fetchDetails", function(req,res){
+	res.render("fetchDetails.html");
+});
+
+app.post("/fetchDetails", function(req,res){
+	res.render("payment.html");
+});
+
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
