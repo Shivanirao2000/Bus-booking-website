@@ -1,7 +1,11 @@
 var express     = require("express");
 var app         = express();
 var bodyParser = require("body-parser");
-
+var passportLocalMongoose=require("passport-local-mongoose");
+var mongoose=require("mongoose");
+// var User=require("./models/user");
+var passport=require("passport");
+var LocalStrategy=require("passport-local");
 
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -71,7 +75,15 @@ app.get("/c1",function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
+app.get("/login", function(req,res){
+	res.render("login");
+});
 
+app.post("/login", passport.authenticate("local",{
+	successRedirect: "/secret",
+	failureRedirect: "/login"
+}), function(req,res){
+});
 
 
 app.listen(port=3000, function(){
