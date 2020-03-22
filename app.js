@@ -86,11 +86,11 @@ app.post("/login", passport.authenticate("local",{
 });
 
 app.get("/fetchDetails", function(req,res){
-	res.render("fetchDetails.html");
+	res.render("fetchDetails.ejs.html");
 });
 
 app.post("/fetchDetails", function(req,res){
-	res.render("payment.html");
+	res.render("payment.ejs.html");
 });
 
 
