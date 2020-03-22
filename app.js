@@ -90,9 +90,8 @@ app.get("/fetchDetails", function(req,res){
 });
 
 app.post("/fetchDetails", function(req,res){
-	res.render("payment.ejs"); 
+	res.render("payment.ejs");
 });
-
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
