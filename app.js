@@ -29,7 +29,7 @@ app.post("/a1",function(req,res){
  bus_name1=req.body.bus_name;
  selected ={bus_name1:bus_name1}
 rest[0]=selected;
-	res.redirect("/a1")
+	res.redirect("/fetchDetails.ejs")
 })
 	
 app.post("/b1",function(req,res){
