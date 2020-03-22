@@ -99,6 +99,7 @@ app.post("/login", passport.authenticate("local",{
 }), function(req,res){
 });
 
+<<<<<<< HEAD
 app.get("/register", function(req,res){
 	res.render("register.ejs");
 });
@@ -132,6 +133,16 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
+=======
+app.get("/fetchDetails", function(req,res){
+	res.render("fetchDetails.ejs");
+});
+
+app.post("/fetchDetails", function(req,res){
+	res.redirect("/payment"); 
+});
+
+>>>>>>> 653906869d53fea8db7d6024579e9237079a789b
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
