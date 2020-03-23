@@ -134,15 +134,40 @@ function isLoggedIn(req, res, next){
 }
 
 =======
+
+>>>>>>> 653906869d53fea8db7d6024579e9237079a789b
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
 
 app.post("/fetchDetails", function(req,res){
-	res.redirect("/payment"); 
+	res.redirect("/fethDetails.ejs"); 
 });
 
->>>>>>> 653906869d53fea8db7d6024579e9237079a789b
+app.get("/credit", function(req,res){
+	res.render("credit.ejs");
+})
+app.post("/credit", function(req,res){
+	res.redirect("/credit.ejs");
+});
+app.get("/otp",function(req,res){
+	res.render("otp.ejs");
+})
+app.post("/otp",function(req,res){
+	res.redirect("/otp");
+});
+app.get("/googlepay",function(req,res){
+	res.render("googlepay.ejs");
+})
+app.post("/googlepay",function(req,res){
+	res.redirect("/googlepay");
+});
+app.get("/success",function(req,res){
+	res.render("success.ejs");
+})
+app.post("/success",function(req,res){
+	res.redirect("/success");
+});
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
