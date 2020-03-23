@@ -31,7 +31,7 @@ var day= today.getDate();
 var month = today.getMonth()+1; 
 var year = today.getFullYear();
 
-app.get("/a1",function(req,res){
+app.get("/a1",isLoggedIn,function(req,res){
 	res.render("busdetails.ejs",{bus:bus,rest:rest})
 })
 
@@ -70,7 +70,7 @@ function get_number(){
     return num;
 }
 
-app.get("/b1",function(req,res){
+app.get("/b1",isLoggedIn,function(req,res){
 	rest[0].bus_name="xxx"
 	var utc = today.getTime() + (today.getTimezoneOffset() * 60000);
 	var nd = new Date(utc + (3600000*+5.5));
@@ -81,7 +81,7 @@ app.get("/b1",function(req,res){
 	res.render("ticket_display.ejs",{rest:rest,ticket_number:ticket_number,time:time})
 })
 
-app.get("/c1",function(req,res){
+app.get("/c1",isLoggedIn,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
@@ -104,7 +104,7 @@ app.post("/login", passport.authenticate("local",{
 }), function(req,res){
 });
 
-<<<<<<< HEAD
+
 app.get("/register", function(req,res){
 	res.render("register.ejs");
 });
@@ -138,9 +138,9 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
-=======
 
->>>>>>> 653906869d53fea8db7d6024579e9237079a789b
+
+
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
