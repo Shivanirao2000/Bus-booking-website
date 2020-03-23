@@ -81,7 +81,7 @@ app.get("/login", function(req,res){
 
 app.post("/login", passport.authenticate("local",{
 	successRedirect: "/secret",
-	failureRedirect: "/login"
+	failureRedirect: "/login.ejs"
 }), function(req,res){
 });
 
@@ -90,10 +90,33 @@ app.get("/fetchDetails", function(req,res){
 });
 
 app.post("/fetchDetails", function(req,res){
-	res.redirect("/payment"); 
+	res.redirect("/fethDetails.ejs"); 
 });
 
-
+app.get("/credit", function(req,res){
+	res.render("credit.ejs");
+})
+app.post("/credit", function(req,res){
+	res.redirect("/credit.ejs");
+});
+app.get("/otp",function(req,res){
+	res.render("otp.ejs");
+})
+app.post("/otp",function(req,res){
+	res.redirect("/otp");
+});
+app.get("/googlepay",function(req,res){
+	res.render("googlepay.ejs");
+})
+app.post("/googlepay",function(req,res){
+	res.redirect("/googlepay");
+});
+app.get("/success",function(req,res){
+	res.render("success.ejs");
+})
+app.post("/success",function(req,res){
+	res.redirect("/success");
+});
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
 });
