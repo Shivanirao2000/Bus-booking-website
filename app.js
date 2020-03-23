@@ -6,12 +6,23 @@ var User=require("./models/user");
 var passport=require("passport");
 var LocalStrategy=require("passport-local");
 var passportLocalMongoose=require("passport-local-mongoose");
+var flash = require("connect-flash");
+var cookieParser = require("cookie-parser");
+var session = require("express-session");
 
 mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect("mongodb://localhost/auth_app",{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(cookieParser('secretString'));
+app.use(require("express-session")({
+	secret: "Bus app",
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -90,7 +101,7 @@ app.get("/", function(req, res){
 })
 
 app.get("/login", function(req,res){
-	res.render("login.ejs");
+	res.render("login.ejs",{message:req.flash("error")});
 });
 
 app.post("/login", passport.authenticate("local",{
@@ -110,11 +121,11 @@ app.post("/register", function(req,res){
 		
 		
 		if(err){
-			// req.flash("error", err.message)
+			req.flash("error", err.message)
 			return res.redirect("/register");
 		}
 		passport.authenticate("local")(req, res, function(){
-			// req.flash("success", "Welcome "+ user.username);
+			req.flash("success", "Welcome "+ user.username);
 			res.redirect("/a1");
 		});
 	});
@@ -122,7 +133,7 @@ app.post("/register", function(req,res){
 
 app.get("/logout", function(req,res){
 	req.logout();
-	// req.flash("success", "Logged out")
+	req.flash("success", "Logged out");
 	res.redirect("/");
 });
 
@@ -130,14 +141,10 @@ function isLoggedIn(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	}
+	req.flash("error", "Please login first")
 	res.redirect("/login");
 }
 
-<<<<<<< HEAD
-=======
-=======
-
->>>>>>> 653906869d53fea8db7d6024579e9237079a789b
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
@@ -170,7 +177,7 @@ app.get("/success",function(req,res){
 app.post("/success",function(req,res){
 	res.redirect("/success");
 });
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
+
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
