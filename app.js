@@ -1,13 +1,23 @@
 var express     = require("express");
 var app         = express();
 var bodyParser = require("body-parser");
-var passportLocalMongoose=require("passport-local-mongoose");
 var mongoose=require("mongoose");
-// var User=require("./models/user");
+var User=require("./models/user");
 var passport=require("passport");
 var LocalStrategy=require("passport-local");
+var passportLocalMongoose=require("passport-local-mongoose");
+
+mongoose.set('useUnifiedTopology', true);
+
+mongoose.connect("mongodb://localhost/auth_app",{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 var bus = [{name:"99B",start_route:["Majestic","Ananda Roa Circle","Central"],end_route:["Malleshwaram","Yeshwanthpura","Mathikere"]},{name:"227C",start_route:["K.R Market","Azad Nagar","Mysore Road"],end_route:["Nayandahalli","R.V.C.E","Kengeri"]},{name:"331A",start_route:["Shivajinagar","Trinity Circle","Marathahalli"],end_route:["C.M.R.I.T","Whitefield","Kadugodi"]},{name:"304H",start_route:["Majestic","K.R.Circle","Halasuru"],end_route:["K.R Puram","Brigade Tech Park","Arehalli"]}]
 
@@ -75,16 +85,62 @@ app.get("/c1",function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
+app.get("/", function(req, res){
+	res.render("home.ejs");
+})
+
 app.get("/login", function(req,res){
-	res.render("login");
+	res.render("login.ejs");
 });
 
 app.post("/login", passport.authenticate("local",{
+<<<<<<< HEAD
 	successRedirect: "/secret",
 	failureRedirect: "/login.ejs"
+=======
+	successRedirect: "/a1",
+	failureRedirect: "/login"
+>>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 }), function(req,res){
 });
 
+<<<<<<< HEAD
+app.get("/register", function(req,res){
+	res.render("register.ejs");
+});
+
+app.post("/register", function(req,res){
+	console.log(req.body.number);
+	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+		
+		
+		if(err){
+			// req.flash("error", err.message)
+			return res.redirect("/register");
+		}
+		passport.authenticate("local")(req, res, function(){
+			// req.flash("success", "Welcome "+ user.username);
+			res.redirect("/a1");
+		});
+	});
+});
+
+app.get("/logout", function(req,res){
+	req.logout();
+	// req.flash("success", "Logged out")
+	res.redirect("/");
+});
+
+function isLoggedIn(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	}
+	res.redirect("/login");
+}
+
+=======
+
+>>>>>>> 653906869d53fea8db7d6024579e9237079a789b
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
@@ -117,6 +173,10 @@ app.get("/success",function(req,res){
 app.post("/success",function(req,res){
 	res.redirect("/success");
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
 });
