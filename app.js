@@ -133,11 +133,9 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
-<<<<<<< HEAD
-=======
-=======
 
->>>>>>> 653906869d53fea8db7d6024579e9237079a789b
+
+
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
@@ -170,7 +168,6 @@ app.get("/success",function(req,res){
 app.post("/success",function(req,res){
 	res.redirect("/success");
 });
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
