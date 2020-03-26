@@ -1,11 +1,11 @@
 var express     = require("express");
 var app         = express();
-var bodyParser = require("body-parser");
-var mongoose=require("mongoose");
-var User=require("./models/user");
-var passport=require("passport");
-var LocalStrategy=require("passport-local");
-var passportLocalMongoose=require("passport-local-mongoose");
+var bodyParser  = require("body-parser");
+var mongoose    = require("mongoose");
+var User		= require("./models/user");
+var passport	= require("passport");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
 var flash = require("connect-flash");
 var cookieParser = require("cookie-parser");
 var session = require("express-session");
@@ -15,7 +15,7 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.connect("mongodb://localhost/auth_app",{ useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(express.static("public"));
 app.use(cookieParser('secretString'));
 app.use(require("express-session")({
 	secret: "Bus app",
@@ -105,13 +105,11 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", passport.authenticate("local",{
-<<<<<<< HEAD
-	successRedirect: "/secret",
-	failureRedirect: "/login.ejs"
-=======
+	/*successRedirect: "/secret",
+	failureRedirect: "/login.ejs"*/
+
 	successRedirect: "/a1",
 	failureRedirect: "/login"
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 }), function(req,res){
 });
 
@@ -150,12 +148,6 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> c9ea367c5ba95c6ab4a6c5fceba1da525ed3a241
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
@@ -188,14 +180,7 @@ app.get("/success",function(req,res){
 app.post("/success",function(req,res){
 	res.redirect("/success");
 });
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> c9ea367c5ba95c6ab4a6c5fceba1da525ed3a241
-
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
 });
