@@ -149,19 +149,41 @@ function isLoggedIn(req, res, next){
 }
 
 app.get("/fetchDetails", function(req,res){
-	res.render("fetchDetails.ejs");
+	res.render("fetchDetails.ejs", {bus:bus,rest:rest});
 });
 
 app.post("/fetchDetails", function(req,res){
+	var bus_name1=req.body.bus_name;
+	var start_route1=req.body.start_route;
+	var end_route1=req.body.end_route;
+	var no_of_ppl1=req.body.no_of_ppl;
+	selected ={bus_name1:bus_name1,start_route1:start_route1,end_route1:end_route1,no_of_ppl1:no_of_ppl1}
+	rest[0]=selected
 	res.redirect("/fethDetails.ejs"); 
+});
+
+app.get("/payment", function(req,res){
+	res.render("payment.ejs");
+})
+
+function get_amount(){
+	var no_of_ppl1=rest[0].no_of_ppl;
+	var amount=Math.floor((Math.random()*15)+5)*no_of_ppl;
+	return amount;
+}
+
+app.post("/payment", function(req,res){
+	var amount = get_amount();
+	res.redirect("/payment");
 });
 
 app.get("/credit", function(req,res){
 	res.render("credit.ejs");
 })
 app.post("/credit", function(req,res){
-	res.redirect("/credit.ejs");
+	res.redirect("/credit");
 });
+
 app.get("/otp",function(req,res){
 	res.render("otp.ejs");
 })
