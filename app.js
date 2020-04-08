@@ -105,13 +105,8 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", passport.authenticate("local",{
-<<<<<<< HEAD
 	successRedirect: "/secret",
 	failureRedirect: "/login.ejs"
-=======
-	successRedirect: "/a1",
-	failureRedirect: "/login"
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 }), function(req,res){
 });
 
@@ -150,12 +145,6 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> c9ea367c5ba95c6ab4a6c5fceba1da525ed3a241
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs");
 });
@@ -188,14 +177,7 @@ app.get("/success",function(req,res){
 app.post("/success",function(req,res){
 	res.redirect("/success");
 });
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> c9ea367c5ba95c6ab4a6c5fceba1da525ed3a241
-
->>>>>>> 532ab59c95fa9b7e50d97d6a6a423cff0b7a5b56
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
 });
