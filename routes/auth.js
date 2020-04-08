@@ -12,7 +12,7 @@ router.post("/login", passport.authenticate("local",{
 	/*successRedirect: "/secret",
 	failureRedirect: "/login.ejs"*/
 
-	successRedirect: "/a1",
+	successRedirect: "/",
 	failureRedirect: "/login"
 }), function(req,res){
 });
