@@ -43,9 +43,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-app.use(express.static("public"));
-app.use(cookieParser('secretSt
-
 app.use(authroutes);
 app.use(busroutes);
 
