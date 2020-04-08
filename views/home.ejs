@@ -1,6 +1,32 @@
-<h1>
-	Home page
-</h1>
-<li><a href="/register">Sign up</a> </li>
-<li><a href="/login">login</a> </li>
-<li><a href="/logout">logout</a> </li>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sierra</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+    
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+    
+    <div id="landing-header">
+ 		<h1>Welcome to BusBookings!</h1>
+		<a href="/a1" class="btn btn-lg btn-success">Buy new ticket</a>
+    </div>
+    
+    
+
+<%- include("partials/footer") %>

@@ -1,32 +1,36 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>BUS</title>
-        <link rel = "stylesheet" href = "/style.css">
-    </head>
-<body>
-<div class="alert alert-danger" role="alert">
-	<%=message%>
-</div><body>
-<div class = "login-box">
-<h1>Login</h1>
- 
-<form action="/login" method="POST">
-	<div class = "textbox">
-		<i class="fa fa-user icon"></i> 
-	<input type="text" name="username" placeholder="username">
+
+
+<%- include("partials/header") %>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="style.css" />
+	
+	<div class="login-box">
+	<h1>
+		Login
+	</h1>
 	</div>
-	<div class = "textbox">
-		<i class="fa fa-key icon"> </i> 
-	<input type="password" name="password" placeholder="password">
+	<div class="login-box">
+	<form action="/login" method="post">
+	
+		<div class="textbox">	
+			<i class="fas fa-user"></i>
+			<input type="text" name="username" placeholder="Username">
+		</div>
+		<div class="textbox">
+			<i class="fas fa-lock"></i>
+			<input type="password" name="password" placeholder="Password">
+		</div>
+	
+		<!-- <button class="btn" type="submit" value="Login!"> -->
+			<button class="btn1">Login</button>
+	</form>
 	</div>
-	<button class="btn">Submit</button>
 	<div class="login-box">
 		
 		<h4>Don't have an account?</h4>
 	</div>  
 	<a class="login-box" href="/register">Sign Up</a>
-</form>
-</div>
-</body>
-</html>
+	
+	
+	<%- include("partials/footer") %>
