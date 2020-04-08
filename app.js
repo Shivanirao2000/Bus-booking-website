@@ -52,24 +52,24 @@ var day= today.getDate();
 var month = today.getMonth()+1; 
 var year = today.getFullYear();
 
-app.get("/a1",isLoggedIn,function(req,res){
+app.get("/",isLoggedIn,function(req,res){
 	res.render("busdetails.ejs",{bus:bus,rest:rest})
 })
 
-app.post("/a1",function(req,res){
+app.post("/",function(req,res){
  bus_name1=req.body.bus_name;
  selected ={bus_name1:bus_name1}
 rest[0]=selected;
 	res.redirect("/a1")
 })
 	
-app.post("/b1",function(req,res){
+app.post("/show",function(req,res){
 	var start_route1=req.body.start_route;
 	var end_route1=req.body.end_route;
 	var no_of_ppl1=req.body.no_of_ppl;
 	 selected ={bus_name1:bus_name1,start_route1:start_route1,end_route1:end_route1,no_of_ppl1:no_of_ppl1}
 	rest[0]=selected
-	res.redirect("/b1")
+	res.redirect("/show")
 })
 var sum=0,a,n=1234567,x,n1,num,i=0;
 
@@ -91,7 +91,7 @@ function get_number(){
     return num;
 }
 
-app.get("/b1",isLoggedIn,function(req,res){
+app.get("/show",isLoggedIn,function(req,res){
 	rest[0].bus_name="xxx"
 	var utc = today.getTime() + (today.getTimezoneOffset() * 60000);
 	var nd = new Date(utc + (3600000*+5.5));
@@ -102,81 +102,11 @@ app.get("/b1",isLoggedIn,function(req,res){
 	res.render("ticket_display.ejs",{rest:rest,ticket_number:ticket_number,time:time})
 })
 
-app.get("/c1",checkOwnership,function(req,res){
+app.get("/check",checkOwnership,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
-app.get("/", function(req, res){
-	res.render("home.ejs");
-})
 
-app.get("/login", function(req,res){
-	res.render("login.ejs",{message:req.flash("error")});
-});
-
-app.post("/login", passport.authenticate("local",{
-
-	successRedirect: "/a1",
-	failureRedirect: "/login"
-}), function(req,res){
-});
-
-
-app.get("/register", function(req,res){
-	res.render("register.ejs");
-});
-
-app.post("/register", function(req,res){
-	console.log(req.body.number);
-	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-		
-		
-		if(err){
-			req.flash("error", err.message)
-			return res.redirect("/register");
-		}
-		passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcome "+ user.username);
-			res.redirect("/a1");
-		});
-	});
-});
-
-app.get("/logout", function(req,res){
-	req.logout();
-	req.flash("success", "Logged out");
-	res.redirect("/");
-});
-
-function isLoggedIn(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	}
-	req.flash("error", "Please login first")
-	res.redirect("/login");
-}
-
-function checkOwnership(req, res, next){
-	
-		if(req.isAuthenticated()){
-			User.findById(req.user._id, function(err, foundcampground){
-			if(err)
-				res.redirect("back");
-			else{
-				if(req.user._id.equals('5e8d95543246be0458415e14')){
-					next();
-				}
-				else{
-					res.redirect("back");
-				}
-			}
-		});
-		}
-		else{
-			req.flash("error", "You need to login first");
-			res.redirect("back");
-		}	
-	}
 	
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs", {bus:bus,rest:rest});
@@ -189,12 +119,10 @@ app.post("/fetchDetails", function(req,res){
 	var no_of_ppl1=req.body.no_of_ppl;
 	selected ={bus_name1:bus_name1,start_route1:start_route1,end_route1:end_route1,no_of_ppl1:no_of_ppl1}
 	rest[0]=selected
-	res.redirect("/fethDetails.ejs"); 
+	res.redirect("/fetchDetails.ejs"); 
 });
 
-app.get("/payment", function(req,res){
-	res.render("payment.ejs");
-})
+
 
 function get_amount(){
 	var no_of_ppl1=rest[0].no_of_ppl;
@@ -202,36 +130,6 @@ function get_amount(){
 	return amount;
 }
 
-app.post("/payment", function(req,res){
-	var amount = get_amount();
-	res.redirect("/payment");
-});
-
-app.get("/credit", function(req,res){
-	res.render("credit.ejs");
-})
-app.post("/credit", function(req,res){
-	res.redirect("/credit");
-});
-
-app.get("/otp",function(req,res){
-	res.render("otp.ejs");
-})
-app.post("/otp",function(req,res){
-	res.redirect("/otp");
-});
-app.get("/googlepay",function(req,res){
-	res.render("googlepay.ejs");
-})
-app.post("/googlepay",function(req,res){
-	res.redirect("/googlepay");
-});
-app.get("/success",function(req,res){
-	res.render("success.ejs");
-})
-app.post("/success",function(req,res){
-	res.redirect("/success");
-});
 
 app.listen(port=3000, function(){
    console.log("The Server Has Started!");
