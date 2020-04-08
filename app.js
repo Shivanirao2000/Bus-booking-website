@@ -12,7 +12,17 @@ var session = require("express-session");
 
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect("mongodb://localhost/auth_app",{ useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/auth_app",{ useNewUrlParser: true });
+mongoose.connect("mongodb+srv://shivani:art_app@cluster0-fkkly.mongodb.net/test?retryWrites=true&w=majority" , {
+					
+			useUnifiedTopology: true,
+			useNewUrlParser: true,
+			useCreateIndex: true
+		}).then(()=>{
+			console.log("Connected to db");
+		}).catch(err=>{
+			console.log("error:", err.message);
+		});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -92,7 +102,7 @@ app.get("/b1",isLoggedIn,function(req,res){
 	res.render("ticket_display.ejs",{rest:rest,ticket_number:ticket_number,time:time})
 })
 
-app.get("/c1",isLoggedIn,function(req,res){
+app.get("/c1",checkOwnership,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
@@ -105,8 +115,9 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", passport.authenticate("local",{
-	successRedirect: "/secret",
-	failureRedirect: "/login.ejs"
+
+	successRedirect: "/a1",
+	failureRedirect: "/login"
 }), function(req,res){
 });
 
@@ -145,6 +156,28 @@ function isLoggedIn(req, res, next){
 	res.redirect("/login");
 }
 
+function checkOwnership(req, res, next){
+	
+		if(req.isAuthenticated()){
+			User.findById(req.user._id, function(err, foundcampground){
+			if(err)
+				res.redirect("back");
+			else{
+				if(req.user._id.equals('5e8d95543246be0458415e14')){
+					next();
+				}
+				else{
+					res.redirect("back");
+				}
+			}
+		});
+		}
+		else{
+			req.flash("error", "You need to login first");
+			res.redirect("back");
+		}	
+	}
+	
 app.get("/fetchDetails", function(req,res){
 	res.render("fetchDetails.ejs", {bus:bus,rest:rest});
 });
