@@ -15,7 +15,11 @@ var day= today.getDate();
 var month = today.getMonth()+1; 
 var year = today.getFullYear();
 
+<<<<<<< HEAD
 router.get("/", middleware.isLoggedIn,function(req,res){
+=======
+router.get("/",middleware.isLoggedIn,function(req,res){
+>>>>>>> 407953cd2d16129516996591abe622763d699d06
 	res.render("busdetails.ejs",{bus:bus,rest:rest})
 })
 

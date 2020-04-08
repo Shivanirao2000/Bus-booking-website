@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <%- include("./partials/header") %>
@@ -9,6 +10,17 @@
 	<h1>
 		Login
 	</h1>
+=======
+<%- include('./partials/header') %>
+
+<div class = "login-box">
+<h1>Login</h1>
+ 
+<form action="/login" method="POST">
+	<div class = "textbox">
+		<i class="fa fa-user icon"></i> 
+	<input type="text" name="username" placeholder="username">
+>>>>>>> 407953cd2d16129516996591abe622763d699d06
 	</div>
 	<div class="login-box">
 	<form action="/login" method="post">
@@ -31,13 +43,7 @@
 		<h4>Don't have an account?</h4>
 	</div>  
 	<a class="login-box" href="/register">Sign Up</a>
-<<<<<<< HEAD
-	
-	
-	<%- include("partials/footer") %>
-=======
 </form>
 </div>
 
 <%- include('./partials/footer') %>
->>>>>>> 778d2e0f65bd6ea6d37abb43766aa25fc27f64f3

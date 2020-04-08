@@ -6,8 +6,8 @@ var passport	= require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var flash = require("connect-flash");
-var cookieParser = require("cookie-parser");
 var session = require("express-session");
+var methodoverride = require("method-override");
 
 var User	= require("./models/user");
 
