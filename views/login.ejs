@@ -1,13 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>BUS</title>
-        <link rel = "stylesheet" href = "/style.css">
-    </head>
-<body>
-<div class="alert alert-danger" role="alert">
-	<%=message%>
-</div><body>
+<%- include('./partials/header') %>
+
 <div class = "login-box">
 <h1>Login</h1>
  
@@ -28,5 +20,5 @@
 	<a class="login-box" href="/register">Sign Up</a>
 </form>
 </div>
-</body>
-</html>
+
+<%- include('./partials/footer') %>
