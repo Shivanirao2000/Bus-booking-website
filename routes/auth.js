@@ -27,7 +27,6 @@ router.post("/register", function(req,res){
 	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
 		
 		
->>>>>>> 407953cd2d16129516996591abe622763d699d06
 		if(err){
 			req.flash("error", err.message)
 			return res.redirect("/register");
