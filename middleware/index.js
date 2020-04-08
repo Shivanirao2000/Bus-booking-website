@@ -22,7 +22,7 @@ middlewareobj.checkOwnership =  function(req, res, next){
     }	
 }
 
-middlewareobj.isloggedin =  function(req, res, next){
+middlewareobj.isLoggedIn =  function(req, res, next){
 	if(req.isAuthenticated()){
 		return next();
 	} else {
