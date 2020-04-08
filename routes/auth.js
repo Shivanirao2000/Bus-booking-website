@@ -4,11 +4,11 @@ var passport    = require("passport");
 var Users       = require("../models/user");
 
 
-router.get("/signup",function(req,res){
-	res.render("signup.ejs")
+router.get("/register",function(req,res){
+	res.render("register.ejs")
 })
 
-router.post("/signup",function(req,res){
+router.post("/register",function(req,res){
 	var newuser = new Users({username: req.body.username});
 	Users.register(newuser, req.body.password, function(err, user){
 		if(err){

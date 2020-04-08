@@ -1,5 +1,5 @@
 var express = require ("express");
-var router = express.Router();
+var router = express.Router({mergeParams: true});
 var middleware = require("../middleware")
 
 
@@ -15,7 +15,7 @@ var day= today.getDate();
 var month = today.getMonth()+1; 
 var year = today.getFullYear();
 
-router.get("/",isLoggedIn,function(req,res){
+router.get("/", middleware.isLoggedIn,function(req,res){
 	res.render("busdetails.ejs",{bus:bus,rest:rest})
 })
 
@@ -54,7 +54,7 @@ function get_number(){
     return num;
 }
 
-router.get("/show",isLoggedIn,function(req,res){
+router.get("/show",middleware.isLoggedIn,function(req,res){
 	rest[0].bus_name="xxx"
 	var utc = today.getTime() + (today.getTimezoneOffset() * 60000);
 	var nd = new Date(utc + (3600000*+5.5));
@@ -65,7 +65,7 @@ router.get("/show",isLoggedIn,function(req,res){
 	res.render("ticket_display.ejs",{rest:rest,ticket_number:ticket_number,time:time})
 })
 
-router.get("/check",checkOwnership,function(req,res){
+router.get("/check",middleware.checkOwnership,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
