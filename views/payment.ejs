@@ -4,5 +4,30 @@
 	Review your journey details<br>
 </p>
 
+<p>
+Bus: <strong><%=rest[0].bus_name1%></strong>
+</p>
+<p>
+From: <strong><%=rest[0].start_route1%></strong>
+</p>
+<p>
+To: <strong><%=rest[0].end_route1%></strong>
+</p>
+<p>
+Number of tickets: <strong><%=rest[0].no_of_ppl1%></strong>
+</p>
+<p>
+Amount to be paid: <strong><%=rest[0].amount%></strong>
+</p>
+<form action="/show" method="post">
+	<h2>Payment methods</h2>
+	<p><button>Google Pay</button></p>
+	<p><button>Debit Card</button></p>
+	<p><button>Credit Pay</button></p>
+	<p><button>PhonePe</button></p>
+</form>
+
 <%- include('./partials/footer') %>
+
+
 	

@@ -15,11 +15,7 @@ var day= today.getDate();
 var month = today.getMonth()+1; 
 var year = today.getFullYear();
 
-<<<<<<< HEAD
-router.get("/", middleware.isLoggedIn,function(req,res){
-=======
 router.get("/",middleware.isLoggedIn,function(req,res){
->>>>>>> 407953cd2d16129516996591abe622763d699d06
 	res.render("busdetails.ejs",{bus:bus,rest:rest})
 })
 
@@ -27,15 +23,10 @@ router.post("/",function(req,res){
  bus_name1=req.body.bus_name;
  selected ={bus_name1:bus_name1}
 rest[0]=selected;
-	res.redirect("/a1")
+	res.redirect("/");
 })
 	
 router.post("/show",function(req,res){
-	var start_route1=req.body.start_route;
-	var end_route1=req.body.end_route;
-	var no_of_ppl1=req.body.no_of_ppl;
-	 selected ={bus_name1:bus_name1,start_route1:start_route1,end_route1:end_route1,no_of_ppl1:no_of_ppl1}
-	rest[0]=selected
 	res.redirect("/show")
 })
 var sum=0,a,n=1234567,x,n1,num,i=0;
@@ -58,8 +49,7 @@ function get_number(){
     return num;
 }
 
-router.get("/show",middleware.isLoggedIn,function(req,res){
-	rest[0].bus_name="xxx"
+router.get("/show",function(req,res){
 	var utc = today.getTime() + (today.getTimezoneOffset() * 60000);
 	var nd = new Date(utc + (3600000*+5.5));
 	var time =  nd.toLocaleString();
@@ -73,17 +63,27 @@ router.get("/check",middleware.checkOwnership,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
+router.get("/payment",function(req,res){
+	res.render("payment.ejs",{rest:rest})
+})
 
 	
-router.get("/payment", function(req,res){
-	res.render("payment.ejs");
+router.post("/payment", function(req,res){
+	var start_route1=req.body.start_route;
+	var end_route1=req.body.end_route;
+	var no_of_ppl1=req.body.no_of_ppl;
+	var amount = 0;
+	 selected ={bus_name1:bus_name1,start_route1:start_route1,end_route1:end_route1,no_of_ppl1:no_of_ppl1,amount:amount}
+	rest[0]=selected;
+	rest[0].amount= get_amount();
+	res.redirect("/payment");
 });
 
 
 function get_amount(){
-	var no_of_ppl1=rest[0].no_of_ppl;
-	var amount=Math.floor((Math.random()*15)+5)*no_of_ppl;
-	return amount;
+	var amount=Math.floor(Math.random()* 5);
+	amount = ( amount + 15 ) * rest[0].no_of_ppl1;
+	return amount ;
 }
 
 module.exports = router;

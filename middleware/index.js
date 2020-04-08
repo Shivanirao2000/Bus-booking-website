@@ -1,3 +1,4 @@
+var User = require("../models/user")
 var middlewareobj = {};
 
 
