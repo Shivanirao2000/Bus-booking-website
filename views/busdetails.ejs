@@ -1,16 +1,21 @@
 <%- include("./partials/header") %>
 <body>
-<div class=bus>
+<div class="login-box">
 <h1>
 	BUS DETAILS
 </h1>
+</div>
 
+<div class="login-box">
 <p>
 	welcome to B.M.T.C
 </p>
+</div>
+
+<div class="login-box">
 <form action="/" method="POST">
 	
-<p>
+<p class="text-box">
 	<label for="bus_name">Choose a bus:</label>
 	<select id="bus_name" name="bus_name" value="bus_name">
 	<% bus.forEach(function(bus){ %>
@@ -22,7 +27,7 @@
 	<% }}); %>
 	</select>
 </p>
-<div>
+<div class="login-box">
 	<button>
 		Submit
 	</button>
@@ -67,7 +72,7 @@
 	</select>
 </p>
 
-<div>
+<div class="login-box">
 	<a href="fetchDetails.ejs">
 	<button>
 		Submit
