@@ -63,9 +63,6 @@ router.get("/check",middleware.checkOwnership,function(req,res){
 	res.render("conductor_check.ejs",{ticket_array:ticket_array})
 })
 
-router.get("/payment",function(req,res){
-	res.render("payment.ejs",{rest:rest})
-})
 
 	
 router.post("/payment", function(req,res){
