@@ -1,14 +1,19 @@
 <%- include('./partials/header') %>
 
+<div class="login-box">
 <p>
-	<strong>TICKET NUMBERS BOOKED</strong>
+	<h1><strong>TICKET NUMBERS BOOKED</strong></h1>
 </p>
+</div>
+
 
 <% ticket_array.forEach(function(ticket){ %>
+	<div class="login-box">
 		<p>
 			<%=ticket%>
 		</p>
-			
+	</div>		
 <% }); %>
+
 
 <%- include('./partials/footer') %>
