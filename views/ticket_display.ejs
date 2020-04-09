@@ -1,25 +1,39 @@
 <%- include('./partials/header') %>
 
+<div class="login-box">
 <h1>
 	TICKET DETAIL
 </h1>
+</div>
+<div class="login-box">
 <p>
 Bus: <strong><%=rest[0].bus_name1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 From: <strong><%=rest[0].start_route1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 To: <strong><%=rest[0].end_route1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 Number of tickets: <strong><%=rest[0].no_of_ppl1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 Ticket number: <strong><%=ticket_number%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 Date(MM/DD/YY):  <strong><%=time%></strong>
 </p>
+</div>
 
 <%- include('./partials/footer') %>

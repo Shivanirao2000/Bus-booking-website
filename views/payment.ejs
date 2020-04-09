@@ -2,31 +2,45 @@
 
 <div class="login-box">
 <p>
-	Review your journey details<br>
+	<h1>Review your journey details<br></h1>
 </p>
 </div>
+
+<div class="login-box">
 <p>
 Bus: <strong><%=rest[0].bus_name1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 From: <strong><%=rest[0].start_route1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 To: <strong><%=rest[0].end_route1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 Number of tickets: <strong><%=rest[0].no_of_ppl1%></strong>
 </p>
+</div>
+<div class="login-box">
 <p>
 Amount to be paid: <strong><%=rest[0].amount%></strong>
 </p>
+</div>
+
+<div class="login-box">
 <form action="/show" method="post">
 	<h2>Payment methods</h2>
-	<p><button>Google Pay</button></p>
-	<p><button>Debit Card</button></p>
-	<p><button>Credit Pay</button></p>
-	<p><button>PhonePe</button></p>
+	<p class="login-box"><button>Google Pay</button></p>
+	<p class="login-box"><button>Debit Card</button></p>
+	<p class="login-box"><button>Credit Pay</button></p>
+	<p class="login-box"><button>PhonePe</button></p>
 </form>
+</div>
 
 <%- include('./partials/footer') %>
 
