@@ -1,7 +1,14 @@
+
+
 <%- include('./partials/header') %>
 
-<div class = "login-box">
-<h1>Login</h1>
+
+	<div class="login-box">
+	<h1>
+		Login
+	</h1>
+	</div>
+	<div class="login-box">
 	<form action="/login" method="post">
 	
 		<div class="textbox">	
@@ -13,16 +20,16 @@
 			<input type="password" name="password" placeholder="Password">
 		</div>
 	
-		<!-- <button class="btn" type="submit" value="Login!"> -->
-			<button class="btn1">Login</button>
+		<input class="btn1" type="submit" value="Login!">
 	</form>
 	</div>
 	<div class="login-box">
 		
 		<h4>Don't have an account?</h4>
 	</div>  
-	<a class="login-box" href="/register">Sign Up</a>
-</form>
+	<a class="login-box" href="/register">Sign up</a>
+ </form>
 </div>
 
 <%- include('./partials/footer') %>
+
