@@ -64,8 +64,8 @@ h1{
     font-size: 20px;
     padding: 8px 0;
     margin: 5px 0;
-    border-bottom: 1px solid white;
-    color: black;
+    border-bottom: 1px solid #625A59;
+    color: #625A59;
 }
 
 .textbox i{
@@ -78,7 +78,7 @@ h1{
     border: none;
     outline: none;
     background: none;
-    color: white;
+    color: #625A59;
     font-size: 18px;
     width: 80px;
     float: left;
@@ -87,8 +87,8 @@ h1{
 .btn1{
     width: 100%;
     background: none;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid #625A59;
+    color: #625A59;
     padding: 5px;
     font-size: 18px;
     margin: 12px 0;
