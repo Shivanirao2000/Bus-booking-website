@@ -47,13 +47,13 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-	color: #625A59;
+	color: #333;
 }
 
 .login-box h1{
     float: left;
     font-size: 70px;
-    border-bottom: 5px solid #625A59;
+    border-bottom: 5px solid #333;
     margin-bottom: 50px;
     padding: 13px 0
 }
@@ -64,8 +64,8 @@ h1{
     font-size: 20px;
     padding: 8px 0;
     margin: 5px 0;
-    border-bottom: 1px solid #625A59;
-    color: #625A59;
+    border-bottom: 1px solid #333;
+    color: #333;
 }
 
 .textbox i{
@@ -78,7 +78,7 @@ h1{
     border: none;
     outline: none;
     background: none;
-    color: #625A59;
+    color: #333;
     font-size: 18px;
     width: 80px;
     float: left;
@@ -87,8 +87,8 @@ h1{
 .btn1{
     width: 100%;
     background: none;
-    border: 2px solid #625A59;
-    color: #625A59;
+    border: 2px solid #333;
+    color: #333;
     padding: 5px;
     font-size: 18px;
     margin: 12px 0;
@@ -99,4 +99,19 @@ body{
 	background-repeat: no-repeat;
     background-size: cover;
     
+}
+
+p{
+    font-size: 2em;
+    color: #333;
+}
+
+.element {
+    font-size: 3em;
+}
+
+select {
+    background-color: antiquewhite;
+    color: black;
+    font-size: .8em;
 }
